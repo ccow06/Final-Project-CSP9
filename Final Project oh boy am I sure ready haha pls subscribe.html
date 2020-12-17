@@ -1,0 +1,135 @@
+<html>
+  <head>
+    <title>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</title>
+    <link rel="icon" href="final.png">
+    <script>
+      var flagTwo = "<img src=\"netherlands.png\">";
+      var flagThree = "<img src=\"nigeria.png\">";
+      var flagFour = "<img src=\"turkey.png\">";
+      var flagFive = "<img src=\"ethiopia.png\">";
+      var submitCount = 0;
+      var answer = "";
+      var table = "";
+      var score = 0;
+      function submitFlag() {
+        answer = document.getElementById("flagInput").value;
+        if (submitCount == 0) {
+          if (answer == "Italy") {
+            score++;
+          }
+          table = "Correct answer: Italy - - - - You answered: " + answer + "<br>";
+          document.getElementById("flag").innerHTML = flagTwo;
+        } else if (submitCount == 1) {
+          if (answer == "The Netherlands" || answer == "Netherlands") {
+            score++;
+          }
+          table = table + "Correct answer: (The) Netherlands - - - - You answered: " + answer + "<br>";
+          document.getElementById("flag").innerHTML = flagThree;
+        } else if (submitCount == 2) {
+          if (answer == "Nigeria") {
+            score++;
+          }
+          table = table + "Correct answer: Nigeria - - - - You answered: " + answer + "<br>";
+          document.getElementById("flag").innerHTML = flagFour;
+        } else if (submitCount == 3) {
+          if (answer == "Turkey") {
+            score++;
+          }
+          table = table + "Correct answer: Turkey - - - - You answered: " + answer + "<br>";
+          document.getElementById("flag").innerHTML = flagFive;
+        } else if (submitCount == 4) {
+          if (answer == "Ethiopia") {
+            score++;
+          }
+          table = table + "Correct answer: Ethiopia - - - - You answered: " + answer + "<br>";
+          table = table + "Your total score was: " + score;
+          document.getElementById("results").innerHTML = table;
+          document.getElementById("body").style.visibility = "hidden";
+          document.getElementById("playAgain").style.visibility = "visible";
+          document.getElementById("results").style.visibility = "visible";
+        }
+        submitCount++;
+        document.getElementById("flagInput").value = "";
+      }
+      function reset() {
+        submitCount = 0;
+        score = 0;
+        document.getElementById("flag").innerHTML = "<img src=\"italy.png\">"
+        document.getElementById("body").style.visibility = "visible";
+        document.getElementById("results").style.visibility = "hidden";
+        document.getElementById("playAgain").style.visibility = "hidden";
+      }
+    </script>
+    <style>
+      body {
+        font-family: "Trebuchet MS";
+        background-image: linear-gradient(blue, skyblue);
+      }
+      img {
+        min-height: 200px;
+      }
+      input {
+        outline: none;
+        border-radius: 10px;
+        text-align: center;
+        background-color: pink;
+        border: 2px solid red;
+        transform: rotate(0.3deg); /* Your pain brings me joy */
+      }
+      input[type="text"]:focus, input[type="button"]:hover {
+        animation: fadeIn 1s 1;
+        animation-fill-mode: forwards;
+      }
+      @keyframes fadeIn {
+        from {background-color: pink;}
+        to {background-color: white;}
+      }
+      input[type="button"]:active {
+        background-image: linear-gradient(darkred, red);
+      }
+      #playAgain {
+        visibility: hidden;
+      }
+      #header {
+        color: red;
+        animation: title 5s infinite ease;
+        font-size: 48px;
+        width: 500px
+      }
+      @keyframes title {
+        0% {
+          color: red;
+        } 25% {
+          color: #0FFF0F;
+          transform: rotate(1080deg);
+        } 50% {
+          color: #FF0FFF;
+          transform: rotate(0deg); /* Required to make the rotation go on every color switch */
+        } 75% {
+          color: black;
+          transform: rotate(1080deg);
+        } 100% {
+          color: red;
+        }
+      }
+      #body {
+         margin-top: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <h1 id="header">Flag Country Quiz!</h1>
+      <span id="body">
+        <span id="flag"><img src="italy.png"></span><br><br>
+        <input type="text" id="flagInput" placeholder="Country Name Goes Here">
+        <input type="button" value="Submit Answer" onclick="submitFlag()">
+      </span>
+    </center>
+    <center>
+      <span id="results"></span><br><br>
+      <input type="button" id="playAgain" onclick="reset()" value="Play Again">
+    </center>
+    <!-- Make a flag quiz game -->
+  </body>
+</html>
